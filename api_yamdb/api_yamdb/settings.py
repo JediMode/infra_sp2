@@ -7,7 +7,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='testkey')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = [] if not any(ALLOWED_HOSTS) else ALLOWED_HOSTS
 
 INSTALLED_APPS = [
     'django.contrib.admin',
